@@ -340,6 +340,25 @@ public class MenuEntrySwapperPlugin extends Plugin
 		final String target = Text.removeTags(event.getTarget()).toLowerCase();
 		final NPC hintArrowNpc  = client.getHintArrowNpc();
 
+		if (config.makeAll())
+		{
+			if (option.equals("make-1"))
+			{
+				swap("make-all", option, target, true);
+			}
+			if (option.contains("smith"))
+			{
+				if (option.contains("smith 1 set"))
+				{
+					swap("smith all sets", option, target, true);
+				}
+				else if (option.contains("smith 1"))
+				{
+					swap("smith all", option, target, true);
+				}
+			}
+		}
+
 		if (hintArrowNpc != null
 			&& hintArrowNpc.getIndex() == eventId
 			&& NPC_MENU_TYPES.contains(MenuAction.of(event.getType())))
